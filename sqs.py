@@ -11,7 +11,7 @@ def receive_message():
     response = SQS.receive_message(
         QueueUrl=env.SQS_QUEUE_URL,
         MaxNumberOfMessages=1,
-        WaitTimeSeconds=0,
+        WaitTimeSeconds=10,
     )
     try:
         message = response['Messages'][0]
