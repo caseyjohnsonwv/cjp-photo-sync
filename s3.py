@@ -1,5 +1,6 @@
 import boto3
 import env
+import os
 
 S3 = boto3.client(
     's3',
@@ -11,3 +12,6 @@ def download_file(object_name):
     download_location = "images/{f}".format(f=object_name)
     S3.download_file(env.S3_BUCKET_NAME, object_name, download_location)
     return download_location
+
+def delete_local_file(file_path):
+    os.remove(file_path)
